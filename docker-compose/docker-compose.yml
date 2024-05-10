@@ -1,0 +1,59 @@
+version: "3"
+
+services:
+  #ubuntu:
+  #  image: ubuntu
+  #  tty: true
+  #  container_name: ubuntu
+  #  volumes:
+  #    - ./main.py:/main.py
+
+  #nginx:
+  #  image: nginx
+  #  container_name: nginx
+  #  ports:
+  #    - "80:80"
+  #    - "443:443"
+  #  networks:
+  #    - docker-compose_default
+
+  #redis:
+  #  image: redis
+  #  container_name: redis
+  #  ports:
+  #    - "6379:6379"
+  
+  #mysql:
+  #  image: mysql
+  #  container_name: mysql
+  #  ports:
+  #    - "3312:3312"
+  #  volumes:
+  #    - db-data:/var/lib/mysql
+  #  environment:
+  #    - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+
+  #python:
+  #  image: python
+  #  tty: true
+  #  container_name: python
+  #  volumes:
+  #    - ./main.py:/main.py
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=mysql
+    ports:
+      - "8085:80"
+
+  python:
+    build:
+      context: .
+
+volumes:
+  db-data:
+
+#networks:
+#  docker-compose_default:
+#    external: true
